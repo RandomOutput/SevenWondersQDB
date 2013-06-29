@@ -1,0 +1,31 @@
+<div class='row'>
+	<div class="span8">
+		<h1>Quotes</h1>
+		<%= form_for Quote.new do |f| %>
+			<%= f.text_area :body, placeholder: 'body', rows: '4' %><br />
+			<%= f.text_field :author, placeholder: 'author' %><br />
+			<%= f.submit %>
+		<% end %>
+		<ul>
+
+			<% for quote in @quotes %>
+				<li id=quote_<%= quote.id %>>
+					<%= quote.body %> - <%= quote.author %> 
+					| <%= link_to 'Delete', quote, method:'delete' %>
+				</li> 
+			<% end %>
+		</ul>
+
+	</div>
+	<div class="span4">
+		<h1>Users</h1>
+		<ul>
+			<% for user in @users %>
+				<li id=user_<%= user.id %>>
+					<%= user.name %>: <%= user.email %> 
+					| <%= link_to 'Delete', user, method:'delete' %>
+				</li> 
+			<% end %>
+		</ul>
+	</div> 
+</div>
