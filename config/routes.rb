@@ -5,7 +5,7 @@ SevenWondersQdb::Application.routes.draw do
   root to: 'wonders_main#index'
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
-  get '/signout', to: 'sessions#destroy', via: :delete
+  delete '/signout', to: 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
