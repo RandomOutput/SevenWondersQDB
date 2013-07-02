@@ -6,16 +6,11 @@
 			<%= f.text_field :author, placeholder: 'author' %><br />
 			<%= f.submit %>
 		<% end %>
-		<ul>
-
-			<% for quote in @quotes %>
-				<li id=quote_<%= quote.id %>>
-					<%= quote.body %> - <%= quote.author %> 
-					| <%= link_to 'Delete', quote, method:'delete' %>
-				</li> 
-			<% end %>
+		<%= will_paginate @quotes %>
+		<ul class="quotes">
+			<%= render @quotes %>
 		</ul>
-
+		<%= will_paginate @quotes %>
 	</div>
 	<div class="span4">
 		<h1>Users</h1>
@@ -23,7 +18,9 @@
 			<% for user in @users %>
 				<li id=user_<%= user.id %>>
 					<%= user.name %>: <%= user.email %> 
-					| <%= link_to 'Delete', user, method:'delete' %>
+					<% if current_user != nil && current_user.admin? && !current_user?(user) %>
+						| <%= link_to 'Delete', user, method:'delete', data: { confirm: 'Are you sure?'} %>
+					<% end %>
 				</li> 
 			<% end %>
 		</ul>

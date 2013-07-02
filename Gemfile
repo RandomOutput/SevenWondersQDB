@@ -7,6 +7,9 @@ gem 'rails', '4.0.0.rc1'
 gem 'pg', '~>0.13.2'
 gem 'bcrypt-ruby', '3.0.1'
 
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 group :assets do
 	gem 'sass-rails', '~> 4.0.0.rc1'
 	gem 'uglifier', '>= 1.3.0'
