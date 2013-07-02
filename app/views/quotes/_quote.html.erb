@@ -1,4 +1,7 @@
 <li id=quote_<%= quote.id %>>
-	<%= quote.body %> - <%= quote.author %> 
-	| <%= link_to 'Delete', quote, method:'delete' %>
+	"<%= quote.body %>"<br \>  
+	Submitted By: <%= User.find_by_id(quote.user_id).name %> 
+	<% if current_user != nil && current_user.id == quote.user_id %>
+	| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
+	<% end %>
 </li> 

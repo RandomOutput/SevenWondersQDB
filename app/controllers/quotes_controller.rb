@@ -1,6 +1,8 @@
 class QuotesController < ApplicationController
   def create
-    Quote.create(quote_params)
+    new_quote = current_user.quotes.build(quote_params)
+    #new_quote.author = current_user.id
+    new_quote.save
     redirect_to root_path
   end
 
@@ -15,6 +17,6 @@ class QuotesController < ApplicationController
   def quote_params
       params.
         require(:quote).
-        permit(:body, :author)
+        permit(:body, :user_id)
   end
 end

@@ -3,7 +3,6 @@
 		<h1>Quotes</h1>
 		<%= form_for Quote.new do |f| %>
 			<%= f.text_area :body, placeholder: 'body', rows: '4' %><br />
-			<%= f.text_field :author, placeholder: 'author' %><br />
 			<%= f.submit %>
 		<% end %>
 		<%= will_paginate @quotes %>
