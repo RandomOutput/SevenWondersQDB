@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @quotes = Quote.where("user_id = #{@user.id}").order('created_at DESC').paginate(page: params[:page], :per_page => 10)
   end
 
   def new

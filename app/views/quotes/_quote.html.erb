@@ -1,7 +1,22 @@
 <li id=quote_<%= quote.id %>>
-	"<%= quote.body %>"<br \>  
-	Submitted By: <%= User.find_by_id(quote.user_id).name %> 
-	<% if current_user != nil && current_user.id == quote.user_id %>
-	| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
-	<% end %>
+	<div class='row'>
+		<div class='span1'>
+			<% if (current_user != nil) && (voted? quote.id) %>
+				<%= link_to raw('<i class="icon-arrow-down"></i></a>'), downvote_url(id: quote.id), class: 'btn btn-mid' %>
+			<% elsif (current_user != nil) %>
+				<%= link_to raw('<i class="icon-arrow-up"></i></a>'), upvote_url(id: quote.id), class: 'btn btn-mid' %>
+			<% else %>
+				<%= link_to raw('<i class="icon-arrow-up"></i></a>'), '#', class: 'btn btn-mid disabled' %>
+			<% end %>
+			<!--a class="btn btn-mid" href="#"><i class="icon-arrow-up"></i></a-->
+			<%= quote.vote_count %>
+		</div>
+		<div class='span7'>
+			"<%= quote.body %>"<br \>  
+			Submitted By: <%= User.find_by_id(quote.user_id).name %> 
+			<% if current_user != nil && current_user.id == quote.user_id %>
+			| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</div>
+	</div>
 </li> 

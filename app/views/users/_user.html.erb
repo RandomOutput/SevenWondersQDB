@@ -1,0 +1,17 @@
+<li id=user_<%= user.id %>>
+	<div class='row'>
+		<div class="span1">
+			<span class='pull-right'><%= gravatar_for user %></span>
+		</div>
+		<div class="user_info span3">
+			<strong><%= user.name %></strong>
+			<% if current_user != nil %>
+			<br />
+			<%= user.email %> 
+			<% end %>
+			<% if current_user != nil && current_user.admin? && !current_user?(user) %>
+				| <%= link_to 'Delete', user, method:'delete', data: { confirm: 'Are you sure?'} %>
+			<% end %>
+		</div>
+	</div>
+</li> 

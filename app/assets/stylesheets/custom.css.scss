@@ -35,4 +35,26 @@ body {
   @extend .error;
 }
 
+ul {
+	list-style: none;
+	margin: 0 0 0 0
+}
+
+.gravatar
+{
+	margin-right: 10px;
+}
+
+.quotes, .users
+{
+	li {
+		margin-left: 0px;
+		margin-top: 20px;
+	}
+}
+
+.user_info
+{
+	margin-left: 10px;
+}
 
