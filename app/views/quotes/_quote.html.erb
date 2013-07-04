@@ -11,11 +11,12 @@
 			<!--a class="btn btn-mid" href="#"><i class="icon-arrow-up"></i></a-->
 			<%= quote.vote_count %>
 		</div>
-		<div class='span7'>
+		<div class='span4'>
 			"<%= quote.body %>"<br \>  
 			Submitted By: <%= User.find_by_id(quote.user_id).name %> 
 			<% if current_user != nil && current_user.id == quote.user_id %>
 			| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
+			| <!-- a href="#" data-remote="true" class="btn" rel="popover" data-original-title="Popover on top">Popover on top</a -->
 			<% end %>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <div class='row'>
-	<div class="span8">
+	<div class="span5">
 		<h1>Quotes</h1>
 		<% if current_user != nil %>
 			<%= form_for Quote.new do |f| %>
@@ -21,10 +21,14 @@
 		</ul>
 		<%= will_paginate @quotes %>
 	</div>
-	<div class="span4">
+	<div class="span3">
 		<h1>Users</h1>
 		<ul class="users">
 			<%= render @users %>
 		</ul>
 	</div> 
+</div>
+
+<div id="popover_content_wrapper" style="display: none">
+  <div>This is your div content</div>
 </div>
