@@ -17,6 +17,8 @@ group :assets do
 	
 end
 gem 'bootstrap-sass', '2.2.2'
+gem 'therubyracer'
+gem 'less-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
