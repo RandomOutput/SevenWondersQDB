@@ -2,9 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+ready = ->
 	$('[rel=popover]').popover(
 		placement:'bottom',
 		html: true,
 		content: ->
 			$('#popover_content_wrapper').html());
+
+$(document).on('page:load', ready)
+$(document).ready(ready)

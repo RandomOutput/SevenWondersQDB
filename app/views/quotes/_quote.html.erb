@@ -13,11 +13,18 @@
 		</div>
 		<div class='span4'>
 			"<%= quote.body %>"<br \>  
-			Submitted By: <%= User.find_by_id(quote.user_id).name %> 
+			Submitted By: <%= User.find_by_id(quote.user_id).name %> <br />
 			<% if current_user != nil && current_user.id == quote.user_id %>
 			| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
-			| <!-- a href="#" data-remote="true" class="btn" rel="popover" data-original-title="Popover on top">Popover on top</a -->
+			| <a href="#" data-remote="true" rel="popover" data-original-title="Quote Privacy">Privacy</a> |
 			<% end %>
 		</div>
 	</div>
 </li> 
+
+<div id="popover_content_wrapper" style="display: none">
+	<div class="btn-group btn-group-vertical privacy-btns">
+	  <button type="button" class="btn btn-primary btn-block">Public</button>
+	  <button type="button" class="btn btn-primary btn-block">Private</button>
+	</div>
+</div>
