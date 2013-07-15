@@ -1,7 +1,11 @@
 module SessionsHelper
 	def sign_in(user)
-		cookies.permanent[:remember_token] = user.remember_token
-		self.current_user = user
+		if(user.approved)
+			cookies.permanent[:remember_token] = user.remember_token
+			self.current_user = user
+		else
+			false
+		end
 	end
 
 	def signed_in?

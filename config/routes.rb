@@ -9,6 +9,7 @@ SevenWondersQdb::Application.routes.draw do
   get 'quotes/:id/upvote' => 'quotes#upvote', as: :upvote
   get 'quotes/:id/downvote' => 'quotes#downvote', as: :downvote
   get 'quotes/:id/set_privacy' => 'quotes#set_privacy', as: :set_privacy
+  get 'users/:id/approval' => 'users#approval', as: :approval
   #get 'quotes/:id/set_public' => 'quotes#set_public', as: :set_public
   #get 'quotes/:id/set_private' => 'quotes#set_private', as: :set_private
 

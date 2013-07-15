@@ -6,6 +6,16 @@
 				<ul class="nav pull-right">
 					<li><%= link_to "Home", root_path %></li>
 					<% if signed_in? %>
+						<% if current_user.admin == true %>
+						<li>
+							<a href="#" id="approval_link" data-remote="true">Approvals
+								<% if approval_count > 0 %>
+									<span class="badge badge-important">
+								<% else %>
+									<span class="badge">
+								<% end %><%= approval_count %></span> </a>
+						</li>
+						<% end %>
 			            <li id="fat-menu" class="dropdown">
 			              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                <%= current_user.email %> <b class="caret"></b>
@@ -32,3 +42,20 @@
 		</div>
 	</div>
 </header>
+
+<!-- approval_popover -->
+<% if approval_count > 0 %>
+<div id="approval_popover" class="popover_content_wrapper" style="display: none">
+	<ul>
+		<% get_approvals.each do |approval| %>
+			<li class="approval_item">
+				<span class=""><%= approval.name %> </span>
+				<span class="">
+					<%= link_to 'approve', approval_url(id: approval.id, apr: "approved"), class: "label label-success" %> 
+					<%= link_to 'deny', approval_url(id: approval.id, apr: "negative"), class: "label label-important" %>
+				</span>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
