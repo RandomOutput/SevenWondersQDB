@@ -12,11 +12,10 @@
 		</div>
 		<div class='span4'>
 			"<%= quote.body %>"<br \>  
-			Submitted By: <%= User.find_by_id(quote.user_id).name %> <br />
+			<span class="author"><strong>Submitted By:</strong> <%= User.find_by_id(quote.user_id).name %></span><br />
 			<% if current_user != nil && current_user.id == quote.user_id %>
-			| <%= link_to 'Delete', quote, method:'delete', data: { confirm: 'Are you sure?' } %>
-			
-			| <a href="#" id="privacy_link_<%=quote.id%>" data-remote="true" rel="popover" data-original-title="Privacy">Privacy:
+			<%= link_to 'Delete', quote, method:'delete', class: "label label-important", data: { confirm: 'Are you sure?' } %>
+			<a href="#" class="label label-info" id="privacy_link_<%=quote.id%>" data-remote="true" rel="privacy_popover" data-original-title="Privacy">Privacy:
 			<% if isPrivate? quote.id %>
 			Private
 			<% elsif isEveryone? quote.id%>

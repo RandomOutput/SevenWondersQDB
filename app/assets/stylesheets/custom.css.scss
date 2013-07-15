@@ -6,6 +6,7 @@ $navbarHeight: 60px;
 html,body {
 	height: 100%;
 }
+
 body {
 	padding-top: 60px;
 	background: image-url("stripe.png");
@@ -17,7 +18,14 @@ body {
 	background: #FFF;
 	padding-left: 30px; 
 	padding-right: 30px;
-	height: 100%;
+}
+
+#footer
+{
+	height: 25px; 
+	background: #fff;
+	padding-left: 30px; 
+	padding-right: 30px;
 }
 
 #logo {
@@ -58,6 +66,16 @@ ul {
 .gravatar
 {
 	margin-right: 10px;
+}
+
+.label
+{
+	margin: 0 0 0 0;
+}
+
+.author
+{
+	font-size: 80%;
 }
 
 .quotes, .users
