@@ -1,17 +1,14 @@
 function ready(){
 	//$('[rel=popover]').popover({placement: 'bottom', html: true, content: $("#popover_content_wrapper").html()});
-	console.log("go");
 	$('[rel=privacy_popover]').each(function(index)
 		{
 			var currentId = $(this).attr('id').match(/[0-9]+/);
-			console.log("currentID: " + currentId);
 			$(this).popover({placement: 'top', html: true, content: $("#privacy_popover_" + currentId).html()});
 		});
 
 	$('.quote_text').each(function(index)
 		{
 			var currentId = $(this).attr('id').match(/[0-9]+/);
-			console.log("");
 			$(this).html(makePretty($(this).html()));
 		});
 }
@@ -33,17 +30,12 @@ function makePretty(raw_string)
 	var startIndex = 0;
 	var result = 0;
 
-	console.log("RAW: \n" + raw_string);
-	//console.log("Search: " + retString.search(timeReg));
-
 	retString = retString.replace(timeReg, "");
 
 
-	console.log("POST: \n" + retString);
 	while(startIndex < retString.length-1)
 	{
 		result = retString.substr(startIndex, retString.length-1).search(nameReg) - 0;
-		console.log("result: " + (startIndex+result-0));
 		if(result == -1)
 		{
 			break;
@@ -70,7 +62,6 @@ function makePretty(raw_string)
 	}
 
 	var initName = retString.match(initNameReg);
-	console.log(initName);
 
 	if(initName != null)
 	{
