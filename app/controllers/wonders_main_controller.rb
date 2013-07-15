@@ -9,15 +9,16 @@ class WondersMainController < ApplicationController
 			quotes_raw = Quote.order('vote_count DESC')#.paginate(page: params[:page], :per_page => 10)
 
 			quotes_raw.each do |quote|
-				if current_user
+				if current_user != nil
 					if quote.privacy == 'private'
-						if current_user.id == quote.id
+						if current_user.id == quote.user_id
 							@quotes.push quote
 						end
 					else
 						@quotes.push quote
 					end
 				else
+					logger.debug "current_user nil"
 					if quote.privacy == 'public'
 						@quotes.push quote
 					end
@@ -41,7 +42,7 @@ class WondersMainController < ApplicationController
 			quotes_raw.each do |quote|
 				if current_user
 					if quote.privacy == 'private'
-						if current_user.id == quote.id
+						if current_user.id == quote.user_id
 							@quotes.push quote
 						end
 					else
