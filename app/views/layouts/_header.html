@@ -6,6 +6,11 @@
 				<ul class="nav pull-right">
 					<li><%= link_to "Home", root_path %></li>
 					<% if signed_in? %>
+						<% if current_user.admin == true %>
+						<li>
+							<a href="#" id="approval_link" data-remote="true">Approvals <span class="badge badge-important"><%= 2 %></span></a>
+						</li>
+						<% end %>
 			            <li id="fat-menu" class="dropdown">
 			              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                <%= current_user.email %> <b class="caret"></b>
