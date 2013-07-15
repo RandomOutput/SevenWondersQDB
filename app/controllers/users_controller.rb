@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the QDB!"
+      flash[:error] = "Your account will have to be approved by an admin. Check back soon."
   		redirect_to @user
   	else
   		render 'new'
@@ -37,6 +37,18 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def approval
+    user = User.find(params[:id])
+
+    if params[:apr] == "approved"
+      user.toggle!(:approved)
+    elsif params[:apr] == "negative"
+      user.destroy
+    end
+
+    redirect_to :back
   end
 
   def destroy
