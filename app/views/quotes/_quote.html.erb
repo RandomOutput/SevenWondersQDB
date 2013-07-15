@@ -2,11 +2,11 @@
 	<div class='row'>
 		<div class='span1'>
 			<% if (current_user != nil) && (voted? quote.id) %>
-				<%= link_to raw('<i class="icon-arrow-down"></i></a>'), downvote_url(id: quote.id), class: 'btn btn-mid' %>
+				<%= link_to image_tag("down_arrow.png"), downvote_url(id: quote.id), class: 'btn btn-mid' %>
 			<% elsif (current_user != nil) %>
-				<%= link_to raw('<i class="icon-arrow-up"></i></a>'), upvote_url(id: quote.id), class: 'btn btn-mid' %>
+				<%= link_to image_tag("up_arrow.png"), upvote_url(id: quote.id), class: 'btn btn-mid' %>
 			<% else %>
-				<%= link_to raw('<i class="icon-arrow-up"></i></a>'), '#', class: 'btn btn-mid disabled' %>
+				<%= link_to image_tag("up_arrow.png"), '#', class: 'btn btn-mid disabled' %>
 			<% end %>
 			<%= quote.vote_count %>
 		</div>
