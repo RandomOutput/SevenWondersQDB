@@ -25,19 +25,19 @@ class WondersMainController < ApplicationController
 				end
 			end
 			if @quotes != [] && @quotes != nil
-				@quotes = @quotes.paginate(page: params[:page], :per_page => 10)
+				@quotes = @quotes.paginate(page: params[:page], :per_page => 6)
 			end
 		when 'upvoted'
 			@quotes = []
 			current_user.votes.each do |vote|
 				@quotes.push(vote.quote)
 			end
-			@quotes = @quotes.paginate(page: params[:page], :per_page => 10)
+			@quotes = @quotes.paginate(page: params[:page], :per_page => 6)
 		when 'mine'
-			@quotes = Quote.where("user_id = #{current_user.id}").order('created_at DESC').paginate(page: params[:page], :per_page => 10)
+			@quotes = Quote.where("user_id = #{current_user.id}").order('created_at DESC').paginate(page: params[:page], :per_page => 6)
 		else
 			@quotes = []
-			quotes_raw = Quote.order('created_at DESC').paginate(page: params[:page], :per_page => 10)
+			quotes_raw = Quote.order('created_at DESC')
 
 			quotes_raw.each do |quote|
 				if current_user
@@ -55,7 +55,7 @@ class WondersMainController < ApplicationController
 				end
 			end
 			if @quotes != [] && @quotes != nil
-				@quotes = @quotes.paginate(page: params[:page], :per_page => 10)
+				@quotes = @quotes.paginate(page: params[:page], :per_page => 6)
 			end
 		end
 	end
