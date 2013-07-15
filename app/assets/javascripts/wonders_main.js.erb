@@ -7,6 +7,78 @@ function ready(){
 			console.log("currentID: " + currentId);
 			$(this).popover({placement: 'top', html: true, content: $("#privacy_popover_" + currentId).html()});
 		});
+
+	$('.quote_text').each(function(index)
+		{
+			var currentId = $(this).attr('id').match(/[0-9]+/);
+			console.log("");
+			$(this).html(makePretty($(this).html()));
+		});
+}
+
+String.prototype.splice = function( idx, rem, s ) {
+    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+};
+
+function makePretty(raw_string)
+{
+	var retString = ""+raw_string;
+	var timeReg = new RegExp("\[[0-9]+(/[0-9]+)+ [0-9]+(:[0-9]+)+ [a-z]+] ", "gi");
+	var timestamps = retString.match(timeReg);
+
+	var initNameReg = new RegExp("^[a-z]+ [a-z]+:","gi");
+	var nameReg = new RegExp("<br>[a-z]+ [a-z]+:","gi");
+	var names = [];
+	var namePositions = [];
+	var startIndex = 0;
+	var result = 0;
+
+	console.log("RAW: \n" + raw_string);
+	//console.log("Search: " + retString.search(timeReg));
+
+	retString = retString.replace(timeReg, "");
+
+
+	console.log("POST: \n" + retString);
+	while(startIndex < retString.length-1)
+	{
+		result = retString.substr(startIndex, retString.length-1).search(nameReg) - 0;
+		console.log("result: " + (startIndex+result-0));
+		if(result == -1)
+		{
+			break;
+		}
+		else
+		{
+			namePositions.push(startIndex+result);
+			startIndex += result + 1;
+		}
+	}
+
+	names = retString.match(nameReg);
+
+	var offset = 0;
+	if(names)
+	{
+		for(var i=0;i<names.length;i++)
+		{
+			retString = retString.splice(namePositions[i]+offset, 0, "<strong>");
+			offset+=8;
+			retString = retString.splice(namePositions[i]+names[i].length+offset,0,"</strong>");
+			offset+=9;
+		}
+	}
+
+	var initName = retString.match(initNameReg);
+	console.log(initName);
+
+	if(initName != null)
+	{
+		retString = retString.splice(0,0,"<strong>");
+		retString = retString.splice(8 + initName[0].length,0,"</strong>");
+	}
+
+	return retString;
 }
 
 $(document).on('page:load', ready);

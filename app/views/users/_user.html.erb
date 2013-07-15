@@ -5,12 +5,12 @@
 		</div>
 		<div class="user_info span2">
 			<strong><%= user.name %></strong>
-			<% if current_user != nil %>
+			<% if current_user.admin == true %>
 			<br />
 			<%= user.email %> 
 			<% end %>
 			<% if current_user != nil && current_user.admin? && !current_user?(user) %>
-				| <%= link_to 'Delete', user, method:'delete', data: { confirm: 'Are you sure?'} %>
+				<%= link_to 'Delete', user, method:'delete',class: "label label-important", data: { confirm: 'Are you sure?'} %>
 			<% end %>
 		</div>
 	</div>

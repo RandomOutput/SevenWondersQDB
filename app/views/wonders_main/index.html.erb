@@ -1,9 +1,9 @@
 <div class='row'>
-	<div class="span5">
+	<div class="span7">
 		<h1>Quotes</h1>
 		<% if current_user != nil %>
 			<%= form_for Quote.new do |f| %>
-				<%= f.text_area :body, placeholder: 'body', rows: '4' %><br />
+				<%= f.text_area :body, placeholder: 'New Quote', rows: '4' %><br />
 				<%= f.submit %>
 			<% end %>
 		<% end %>

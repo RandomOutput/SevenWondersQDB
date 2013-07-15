@@ -1,4 +1,4 @@
-$gridColumns: 9;
+$gridColumns: 11;
 $navbarHeight: 60px;
 @import "bootstrap";
 
@@ -32,10 +32,13 @@ h2 {
 
 #footer
 {
-	height: 25px; 
+	font-size: 90%;
+	color: #444;
 	background: #fff;
 	padding-left: 30px; 
 	padding-right: 30px;
+	padding-top: 20px;
+	padding-bottom: 10px;
 }
 
 #logo {

@@ -10,12 +10,12 @@
 			<% end %>
 			<%= quote.vote_count %>
 		</div>
-		<div class='span4'>
-			"<%= quote.body %>"<br \>  
+		<div class='span6'>
+			<span id="quote_<%= quote.id %>_text" class="quote_text"><%= h(quote.body).gsub(/\n/, '<br/>').html_safe %></span><br \>  
 			<span class="author"><strong>Submitted By:</strong> <%= User.find_by_id(quote.user_id).name %></span><br />
 			<% if current_user != nil && current_user.id == quote.user_id %>
 			<%= link_to 'Delete', quote, method:'delete', class: "label label-important", data: { confirm: 'Are you sure?' } %>
-			<a href="#" class="label label-info" id="privacy_link_<%=quote.id%>" data-remote="true" rel="privacy_popover" data-original-title="Privacy">Privacy:
+			<a href="#" class="label label-info" id="privacy_link_<%=quote.id%>" data-remote="true" rel="privacy_popover">Privacy:
 			<% if isPrivate? quote.id %>
 			Private
 			<% elsif isEveryone? quote.id%>
@@ -28,19 +28,19 @@
 		</div>
 	</div>
 	<div id="privacy_popover_<%=quote.id%>" class="popover_content_wrapper" style="display: none">
-		<div class="btn-group btn-group-vertical privacy-btns">
+		<div class="btn-group btn-group-vertical btn-block">
 			<% if isPrivate?(quote.id) %>
-	  			<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn btn-primary btn-block privacy-btn" %>
-	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn btn-primary btn-block privacy-btn" %>
-	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn btn-primary btn-block privacy-btn active" %>
+	  			<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn  " %>
+	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn  " %>
+	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn   active" %>
 	  		<% elsif isEveryone? quote.id%>
-				<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn btn-primary btn-block privacy-btn active" %>
-	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn btn-primary btn-block privacy-btn " %>
-	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn btn-primary btn-block privacy-btn" %>
+				<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn   active" %>
+	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn   " %>
+	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn  " %>
 	  		<% else %>
-	  			<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn btn-primary btn-block privacy-btn" %>
-	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn btn-primary btn-block privacy-btn active" %>
-	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn btn-primary btn-block privacy-btn" %>
+	  			<%= link_to "Everyone", set_privacy_url(id: quote.id, privacy: "public"), class: "btn  " %>
+	  			<%= link_to "Users Only", set_privacy_url(id: quote.id, privacy: "protected"), class: "btn   active" %>
+	  			<%= link_to "Private", set_privacy_url(id: quote.id, privacy: "private"), class: "btn  " %>
 	  		<% end %>
 	  	</div>
 	</div>
