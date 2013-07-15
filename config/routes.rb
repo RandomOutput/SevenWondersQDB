@@ -8,6 +8,9 @@ SevenWondersQdb::Application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   get 'quotes/:id/upvote' => 'quotes#upvote', as: :upvote
   get 'quotes/:id/downvote' => 'quotes#downvote', as: :downvote
+  get 'quotes/:id/set_privacy' => 'quotes#set_privacy', as: :set_privacy
+  #get 'quotes/:id/set_public' => 'quotes#set_public', as: :set_public
+  #get 'quotes/:id/set_private' => 'quotes#set_private', as: :set_private
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

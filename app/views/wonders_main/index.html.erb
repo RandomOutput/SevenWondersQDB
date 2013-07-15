@@ -15,11 +15,13 @@
 				<li class=<%="#{is_active?('mine')}"%>><%= link_to 'Mine', root_path(sort: "mine") %></li>
 			<% end %>
 		</ul>
-		<%= will_paginate @quotes %>
-		<ul class="quotes">
-			<%= render @quotes %>
-		</ul>
-		<%= will_paginate @quotes %>
+		<% if @quotes != nil && @quotes != [] %>
+			<%= will_paginate @quotes %>
+				<ul class="quotes">
+					<%= render @quotes %>
+				</ul>
+			<%= will_paginate @quotes %>
+		<% end %>
 	</div>
 	<div class="span3">
 		<h1>Users</h1>

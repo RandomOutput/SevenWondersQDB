@@ -10,4 +10,24 @@ module QuotesHelper
     	
     	return found
   	end
+
+  	def isPrivate?(quote_id)
+		quote = Quote.find(quote_id)
+
+		if quote.privacy == "private"
+			true
+		else
+			false
+		end
+	end
+
+	def isEveryone?(quote_id)
+		quote = Quote.find(quote_id)
+
+		if quote.privacy == "public"
+			true
+		else
+			false
+		end
+	end
 end

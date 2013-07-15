@@ -1,0 +1,13 @@
+function ready(){
+	//$('[rel=popover]').popover({placement: 'bottom', html: true, content: $("#popover_content_wrapper").html()});
+	console.log("go");
+	$('[rel=popover]').each(function(index)
+		{
+			var currentId = $(this).attr('id').match(/[0-9]+/);
+			console.log("currentID: " + currentId);
+			$(this).popover({placement: 'top', html: true, content: $("#privacy_popover_" + currentId).html()});
+		});
+}
+
+$(document).on('page:load', ready);
+$(document).ready(ready);
