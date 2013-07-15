@@ -23,10 +23,12 @@
 			<%= will_paginate @quotes %>
 		<% end %>
 	</div>
-	<div class="span3">
-		<h1>Users</h1>
-		<ul class="users">
-			<%= render @users %>
-		</ul>
+	<div id="user_col" class="span4">
+		<div class="well">
+			<h2>Users</h2>
+			<ul class="users">
+				<%= render @users %>
+			</ul>
+		</div>
 	</div> 
 </div>
